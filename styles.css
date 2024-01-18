@@ -17,7 +17,8 @@ body {
     position: relative;
     width: 300px;
     height: 450px;
-    margin: 10px;
+    margin: 0px;
+    margin-left: 100px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
     border-radius: 10px;
@@ -290,7 +291,7 @@ button {
 }
 
 .page-title {
-    font-size: 24px;
+    font-size: 44px;
     margin: 0;
 }
 
@@ -326,7 +327,7 @@ button {
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 150px;
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
