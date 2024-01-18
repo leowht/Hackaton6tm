@@ -9,7 +9,7 @@ let flippedCard = null;
 
 function displayCardsInGrid(data) {
     const gridContainer = document.getElementById('app');
-    gridContainer.classList.add('card-grid'); // Add a class for styling the grid
+    gridContainer.classList.add('card-grid');
 
     data.forEach(employee => {
         const card = document.createElement('div');
@@ -28,7 +28,20 @@ function displayCardsInGrid(data) {
         const name = document.createElement('p');
         name.textContent = `${employee.prenom} ${employee.nom}`;
 
+        const position = document.createElement('p');
+        position.textContent = `Poste: ${employee.poste}`;
+
+        const team = document.createElement('p');
+        team.textContent = `Équipe: ${employee.equipe}`;
+
+        const agency = document.createElement('p');
+        agency.textContent = `Agence: ${employee.agence}`;
+
         cardContent.appendChild(name);
+        cardContent.appendChild(position);
+        cardContent.appendChild(team);
+        cardContent.appendChild(agency);
+
         front.appendChild(img);
         front.appendChild(cardContent);
 
