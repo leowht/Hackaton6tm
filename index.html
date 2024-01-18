@@ -30,6 +30,14 @@
             </div>
         </div>
 
+        <div id="myModal" class="modal">
+            <div class="modal-content green-border"> <!-- Ajout de la classe green-border -->
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p>Contenu de la fenêtre modale...</p>
+            </div>
+        </div>
+
+
         <div class="content">
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Rechercher...">
@@ -111,7 +119,7 @@
             modal.innerHTML = ''; // Clear previous content
 
             var modalContent = document.createElement('div');
-            modalContent.className = 'modal-content';
+            modalContent.className = 'modal-content green-border'; // Ajout de la classe green-border
 
             var closeBtn = document.createElement('span');
             closeBtn.className = 'close';
@@ -123,6 +131,7 @@
 
             var connectBtn = document.createElement('button');
             connectBtn.textContent = 'Se connecter';
+            connectBtn.className = 'modal-btn'; // Ajout de la classe modal-btn
             connectBtn.onclick = function () {
                 var email = document.getElementById('emailInput').value;
                 var password = document.getElementById('passwordInput').value;
@@ -142,6 +151,16 @@
 
             modal.style.display = 'block';
         }
+
+
+            modalContent.appendChild(closeBtn);
+            modalContent.appendChild(emailInput);
+            modalContent.appendChild(passwordInput);
+            modalContent.appendChild(connectBtn);
+
+            modal.appendChild(modalContent);
+
+            modal.style.display = 'block';
 
         function createTextInput(id, placeholder, type) {
             var input = document.createElement('input');

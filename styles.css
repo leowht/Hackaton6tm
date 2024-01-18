@@ -17,7 +17,8 @@ body {
     position: relative;
     width: 200px;
     height: 300px;
-    margin: 100px;
+    margin: 10px;
+    top: 180px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
     border-radius: 10px; /* Ajustez le border-radius pour arrondir les coins */
@@ -133,10 +134,12 @@ img {
     cursor: pointer;
     transition: left 0.3s ease-in-out;
     border-right: 6px solid #7be1b2;
+    z-index: 1002;
 }
 
 .toggle-btn.active {
     left: 190px;
+    z-index: 1002;
 }
 
 .content {
@@ -245,6 +248,7 @@ button {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
 }
 
 .modal-content {
@@ -252,18 +256,21 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #414141;
     padding: 20px;
     border-radius: 10px;
 }
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
+    top: -5px;
+    right: 5px;
+    font-size: 30px;
     cursor: pointer;
+    color: #7be1b2; /* Changer la couleur en vert */
+    font-weight: bold;
 }
+
 
 .top-bar {
     background-color: #3a424e;
@@ -326,4 +333,29 @@ button {
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.green-border {
+    border: 6px solid #7be1b2; /* Ajout du contour vert */
+}
+
+.modal-input {
+    margin-bottom: 10px; /* Espacement entre les champs de saisie */
+    width: 100%; /* Les champs de saisie occupent toute la largeur */
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #414141;
+    color: #66696d;
+}
+
+button.modal-btn {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #51767a;
+    color: #7be1b2;
+    cursor: pointer;
 }
