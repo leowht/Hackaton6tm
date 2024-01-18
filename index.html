@@ -19,10 +19,8 @@
             <a href="#" class="button" onclick="redirectToLink('https://www.6tm.com/entreprise-transformation-digitale/')">l'entreprise</a>
             <a href="#" class="button" onclick="redirectToLink('https://www.6tm.com/blog/')">le blog</a>
             <a href="#" class="button" onclick="openModal()">admin panel</a>
-            <!-- <button class="button" onclick="openModal()">Ouvrir la fenêtre modale</button> -->
         </div>
 
-        <!-- Ajoutez la fenêtre modale -->
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
@@ -31,7 +29,7 @@
         </div>
 
         <div id="myModal" class="modal">
-            <div class="modal-content green-border"> <!-- Ajout de la classe green-border -->
+            <div class="modal-content green-border">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <p>Contenu de la fenêtre modale...</p>
             </div>
@@ -79,7 +77,6 @@
         }
 
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
-            // Check if the key pressed is Enter (key code 13)
             if (event.key === "Enter") {
                 searchText();
             }
@@ -109,14 +106,13 @@
         function redirectToLink(link) {
             window.location.href = link;
         }
-        // Fonction pour ouvrir la fenêtre modale
         function openModal() {
             var passwordInput = createTextInput('passwordInput', 'Entrez votre mot de passe', 'password');
             var modal = document.getElementById('myModal');
-            modal.innerHTML = ''; // Clear previous content
+            modal.innerHTML = '';
 
             var modalContent = document.createElement('div');
-            modalContent.className = 'modal-content green-border'; // Ajout de la classe green-border
+            modalContent.className = 'modal-content green-border';
 
             var closeBtn = document.createElement('span');
             closeBtn.className = 'close';
@@ -128,12 +124,11 @@
 
             var connectBtn = document.createElement('button');
             connectBtn.textContent = 'Se connecter';
-            connectBtn.className = 'modal-btn'; // Ajout de la classe modal-btn
+            connectBtn.className = 'modal-btn';
             connectBtn.onclick = function () {
                 var email = document.getElementById('emailInput').value;
                 var password = document.getElementById('passwordInput').value;
 
-                // Vérifiez si les champs sont remplis avant de fermer la popup
                 if (email.trim() !== '' && password.trim() !== '') {
                     closeModal();
                 }
@@ -164,13 +159,10 @@
             input.type = type || 'text';
             input.placeholder = placeholder;
             input.id = id;
-            input.className = 'modal-input'; // Ajout d'une classe pour le style
+            input.className = 'modal-input';
 
             return input;
         }
-
-
-
 
         function closeModal() {
             var modal = document.getElementById('myModal');

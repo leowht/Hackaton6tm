@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('data.json') // Replace 'data.json' with the path to your JSON file
+    fetch('data.json')
         .then(response => response.json())
         .then(data => displayCardsInGrid(data))
         .catch(error => console.error('Error fetching data:', error));
