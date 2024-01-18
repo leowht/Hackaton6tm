@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6TM - Trombioscope</title>
+    <link rel="icon" href="https://pbs.twimg.com/profile_images/1478355447585333250/X3Dww9IL_400x400.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap">
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="toggle-btn" onclick="toggleMenu()">►</button>
+        <div class="menu">
+            <a href="#" class="button" onclick="redirectToLink('https://www.6tm.com/nous-contacter/')">nous contacter</a>
+            <a href="#" class="button" onclick="redirectToLink('https://franchise.6tm.com/')">franchises et résaux</a>
+            <a href="#" class="button" onclick="redirectToLink('https://www.6tm.com/entreprise-transformation-digitale/')">l'entreprise</a>
+            <a href="#" class="button" onclick="redirectToLink('https://www.6tm.com/blog/')">le blog</a>
+            <a href="#" class="button" onclick="openModal()">admin panel</a>
+            <!-- <button class="button" onclick="openModal()">Ouvrir la fenêtre modale</button> -->
+        </div>
+
+        <!-- Ajoutez la fenêtre modale -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p>Contenu de la fenêtre modale...</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Rechercher...">
+                <button onclick="searchText()">
+                    <span class="search-icon">🔍</span>
+                </button>
+            </div>
+
+            <p id="mainText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Nullam eleifend euismod diam
+                in dignissim. Maecenas eget dui vitae turpis fermentum fermentum. Integer nec mauris in quam pharetra
+                ultricies. Quisque eget facilisis velit. Ut sagittis felis eu lectus consequat, vel interdum urna
+                tincidunt. Duis consectetur elit a neque consectetur, et volutpat lacus pulvinar.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <link rel="stylesheet" href="styles.css">
+        <div id="app"></div>
+        <script src="script.js"></script>
+    </div>
+
+    <div class="top-bar">
+      <img src="logo.png" alt="Logo" class="logo">
+      <h1 class="page-title">Trombinoscope</h1>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            var toggleBtn = document.querySelector('.toggle-btn');
+
+            menu.classList.toggle('active');
+            toggleBtn.classList.toggle('active');
+
+            if (menu.classList.contains('active')) {
+                toggleBtn.innerText = "◄";
+            } else {
+                toggleBtn.innerText = "►";
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('keydown', function (event) {
+            // Check if the key pressed is Enter (key code 13)
+            if (event.key === "Enter") {
+                searchText();
+            }
+        });
+
+        function searchText() {
+            var searchInput = document.getElementById('searchInput').value.toLowerCase();
+            var cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                var name = card.querySelector('.card-content p').textContent.toLowerCase();
+                var front = card.querySelector('.front');
+
+                if (searchInput === "") {
+                    card.style.display = "block";
+                    front.style.backgroundColor = "#fff";
+                } else if (name.includes(searchInput)) {
+                    card.style.display = "block";
+                    front.style.backgroundColor = "#7be1b2";
+                } else {
+                    card.style.display = "none";
+                    front.style.backgroundColor = "";
+                }
+            });
+        }
+
+        function redirectToLink(link) {
+            window.location.href = link;
+        }
+        // Fonction pour ouvrir la fenêtre modale
+        function openModal() {
+            var passwordInput = createTextInput('passwordInput', 'Entrez votre mot de passe', 'password');
+            var modal = document.getElementById('myModal');
+            modal.innerHTML = ''; // Clear previous content
+
+            var modalContent = document.createElement('div');
+            modalContent.className = 'modal-content';
+
+            var closeBtn = document.createElement('span');
+            closeBtn.className = 'close';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = closeModal;
+
+            var emailInput = createTextInput('emailInput', 'Entrez votre e-mail');
+            var passwordInput = createTextInput('passwordInput', 'Entrez votre mot de passe');
+
+            var connectBtn = document.createElement('button');
+            connectBtn.textContent = 'Se connecter';
+            connectBtn.onclick = function () {
+                var email = document.getElementById('emailInput').value;
+                var password = document.getElementById('passwordInput').value;
+
+                // Vérifiez si les champs sont remplis avant de fermer la popup
+                if (email.trim() !== '' && password.trim() !== '') {
+                    closeModal();
+                }
+            };
+
+            modalContent.appendChild(closeBtn);
+            modalContent.appendChild(emailInput);
+            modalContent.appendChild(passwordInput);
+            modalContent.appendChild(connectBtn);
+
+            modal.appendChild(modalContent);
+
+            modal.style.display = 'block';
+        }
+
+        function createTextInput(id, placeholder, type) {
+            var input = document.createElement('input');
+            input.type = type || 'text';
+            input.placeholder = placeholder;
+            input.id = id;
+            input.className = 'modal-input'; // Ajout d'une classe pour le style
+
+            return input;
+        }
+
+
+
+
+        function closeModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

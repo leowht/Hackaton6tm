@@ -1,0 +1,329 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', Arial, sans-serif;
+    background-color: #424242;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    grid-template-rows: auto; /* Auto rows, adjust as needed */
+    gap: 20px; /* Adjust the gap between cards as needed */
+    justify-content: center;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto; /* Center the grid on the page */
+}
+
+.card {
+    perspective: 1000px;
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin: 100px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    border-radius: 10px; /* Ajustez le border-radius pour arrondir les coins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoutez une ombre sous les cartes */
+}
+
+.card:hover {
+    transform: scale(1.05) rotateX(-10deg) rotateY(10deg);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px; /* Appliquez border-radius à l'avant et à l'arrière */
+}
+
+.front {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.back {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+
+img {
+    max-width: 70%;
+    border-radius: 5%;
+}
+
+.card-content {
+    margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: 50px;
+}
+
+.menu {
+    position: fixed;
+    top: 63px;
+    left: -300px;
+    width: 200px; /* Ajustez la largeur du menu selon vos besoins */
+    height: 100%;
+    background-color: #3a424e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    transition: left 0.3s ease-in-out;
+    border-right: 6px solid #7be1b2;
+}
+
+/* Aligner les boutons du menu vers la gauche */
+.menu .button {
+    text-align: left;
+    width: 100%; /* Les boutons occupent toute la largeur du menu */
+}
+
+/* Ajouter de l'espace entre chaque bouton */
+.menu .button {
+    margin-bottom: 100px;
+}
+
+.menu.active {
+    left: 0;
+}
+
+.button {
+    color: #fff;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #313741   ;
+}
+
+.toggle-btn {
+    position: fixed;
+    top: 80px;
+    left: 0px;
+    background-color: #3a424e;
+    color: #7be1b2;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: left 0.3s ease-in-out;
+    border-right: 6px solid #7be1b2;
+}
+
+.toggle-btn.active {
+    left: 190px;
+}
+
+.content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#mainText {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+input[type="text"] {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #373535;
+    color: #66696d;
+}
+
+button {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3a424e;
+    color: #7be1b2;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+}
+
+input[type="text"] {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 10px 0 0 10px; /* Arrondir le coin supérieur gauche et inférieur gauche */
+    background-color: #373535;
+    color: #66696d;
+    flex: 1; /* Permet au champ de saisie de s'étendre sur toute la largeur disponible */
+}
+
+button {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 0 10px 10px 0; /* Arrondir le coin supérieur droit et inférieur droit */
+    background-color: #3a424e;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-icon {
+    font-size: 18px; /* Ajuster la taille de l'icône de recherche */
+}
+
+.button {
+    font-family: 'Quicksand', Arial, sans-serif;
+}
+
+.menu.fixed {
+    position: fixed;
+}
+
+/* Centrer les images horizontalement */
+#imageSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Modifier la propriété justify-content */
+    align-items: center; /* Ajouter la propriété align-items pour centrer verticalement */
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.image-container {
+    width: calc(25% - 20px);
+    margin: 10px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#imageSection .second-row {
+    margin-top: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.top-bar {
+    background-color: #3a424e;
+    color: #7be1b2;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Assurez-vous que la barre est au-dessus des autres éléments */
+}
+
+.logo {
+    width: 90px; /* Ajustez la taille du logo selon vos besoins */
+    height: auto;
+}
+
+.page-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.toggle-btn {
+    z-index: 1001; /* Assurez-vous que le bouton du menu est au-dessus de la barre */
+}
+
+.top-bar,
+.menu {
+    box-sizing: border-box;
+}
+
+.top-bar {
+    border-bottom: 6px solid #7be1b2; /* Ajoutez une bordure en bas de la barre */
+}
+
+.container {
+    padding-top: 10px; /* Ajustez la valeur pour l'espace au-dessus du contenu */
+}
+
+.menu.fixed {
+    top: 70px; /* Ajustez la valeur selon la hauteur de la barre supérieure */
+}
+
+.menu {
+    z-index: 1003; /* Assurez-vous que le menu est au-dessus de la barre supérieure */
+}
+
+.top-bar {
+    /* position: relative; Assurez-vous que la barre supérieure respecte la position de l'élément parent */
+    z-index: 1002; /* Gardez la barre supérieure juste en dessous du menu déroulant */
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
